@@ -2,6 +2,9 @@
 <html lang="en-US">
 <head>
     <title>Login Test</title>
+    <label> Message From iOS App:
+        <input type="text" name="msgText" />
+    </label>
 </head>
 <body>
     <script type="text/javascript">
@@ -30,6 +33,9 @@
             else if (window !== window.parent) {
                 window.parent.postMessage(message, '*');
             }
+        }
+        function setMessageFromIOS(msg) {
+            document.getElementById(“msgText”).value = msg;
         }
     </script>
 
