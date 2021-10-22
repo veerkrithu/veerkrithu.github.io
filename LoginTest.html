@@ -31,10 +31,6 @@
                 window.parent.postMessage(message, '*');
             }
         }
-        
-        function setMessageFromIOS(msg) {
-            document.getElementById(“msgText”).value = msg;
-        }
     </script>
 
     <input type="submit" value="Login" onclick="return sendMessage();" />
