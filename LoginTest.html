@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Login Test</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function sendMessage(){
+            var message = {
+              sentinel: 'amp',
+              // type: '',  reserve but don't populate
+              event: 'auth-success',
+              fly_urs: 'TEST',
+              urs_token: 'TEST',
+            }
+
+            sendPostMessage(message);
+            return false;
+        }
+
+        function  sendPostMessage(message){
+            if (window.webkit) {
+        			window.webkit.messageHandlers.jsHandler.postMessage(message);
+            }
+            // for Android
+            else if (window.Android) {
+                Android.postMessage(JSON.stringify(message));
+            }
+            // for regular iframes
+            else if (window !== window.parent) {
+                window.parent.postMessage(message, '*');
+            }
+        }
+    </script>
+
+    <input type="submit" value="Login" onclick="return sendMessage();" />
+</body>
+</html>
